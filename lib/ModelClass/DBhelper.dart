@@ -12,13 +12,14 @@ class dbhelper {
   Future<Database> get database async {
     if (db == null) {
       return await initializeDatabase();
-    } else {
+    }
       return db;
     }
-  }
+
 
   initializeDatabase() async {
     return await openDatabase(join(await getDatabasesPath(), databaseName),
+
         version: 1, onCreate: (Database db1, int version) async {
       await db1.execute(
           "CREATE TABLE Datatable(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, text TEXT, desc TEXT )");
